@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+        }
+
+        #option:hover img{
+            filter: grayscale(0);
+            transition: all .3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-[#101F2B]">
+    <div class="relative w-fit top-5 left-5 group">
+        <div class="flex rounded-md items-center justify-between bg-white p-2">
+            <input type="text" id="dropdownInput" readonly placeholder="Choose One"
+                class="placeholder:text-black cursor-default outline-none">
+            <i id="iconDown" class="fa-solid cursor-pointer fa-chevron-down"></i>
+        </div>
+        <div class="absolute w-full top-0 group-hover:top-14 invisible group-hover:visible transition-all duration-300 flex flex-col gap-2">
+            <p id="option" onclick="selectOption('Telegram')" class="w-full rounded-md bg-white p-2 flex items-center cursor-pointer transition-all duration-300 justify-between">
+                <img width="25" class="grayscale" src="./images/telegram-logo.webp" alt="Telegram logo"><strong>Telegram</strong>
+            </p>
+            <p id="option" onclick="selectOption('Instagram')" class="w-full rounded-md bg-white p-2 flex items-center cursor-pointer transition-all duration-300 justify-between">
+                <img width="25" class="grayscale" src="./images/instagram-logo.webp" alt="Instagram logo"><strong>Instagram</strong>
+            </p>
+            <p id="option" onclick="selectOption('YouTube')" class="w-full rounded-md bg-white p-2 flex items-center cursor-pointer transition-all duration-300 justify-between">
+                <img width="25" class="grayscale" src="./images/youtube-logo.png" alt="YouTube logo"><strong>YouTube</strong>
+            </p>
+        </div>
+    </div>
+
+    <form action="" class="w-[300px] p-3 rounded-xl absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] bg-pink-400">
+        <label class="">
+            <input type="file" class="hidden">
+            <img width="100" class="rounded-full cursor-pointer mx-auto" src="images/avatar.jpg" alt="">
+            <p class="text-center my-2">Click img for edit</p>
+        </label>
+        <div class="flex flex-col gap-2">
+            <label>
+                <input type="text" name="username" placeholder="Username" class="w-full p-2 border-2 border-gray-300 rounded-md focus:outline-none focus:border-pink-500">
+            </label>
+            <label>
+                <input type="number" name="posts" placeholder="Post" class="w-full p-2 border-2 border-gray-300 rounded-md focus:outline-none focus:border-pink-500">
+            </label>
+            <label>
+                <input type="number" name="followers" placeholder="Followers" class="w-full p-2 border-2 border-gray-300 rounded-md focus:outline-none focus:border-pink-500">
+            </label>
+            <label>
+                <textarea name="bio" placeholder="Bio" class="w-full p-2 border-2 border-gray-300 rounded-md focus:outline-none focus:border-pink-500"></textarea>
+            </label>
+        </div>
+        <button>Submit</button>
+    </form>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
