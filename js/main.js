@@ -1,23 +1,41 @@
-let form = document.querySelector("form");
+const form = document.querySelector("form");
+const changeInput = document.querySelector("#chooseImg");
 
 function thousandK(value) {
-    const newValue = value.slice(0, -3) + "K";
-    return newValue
+    return value.slice(0, -3) + "K";
 }
+
+changeInput.addEventListener("change", evt => {
+    document.getElementById("showChoosenImg").src = URL.createObjectURL(evt.target.files[0]);
+});
 
 form.addEventListener("submit", evt => {
     evt.preventDefault();
-    const followersValue = evt.target.followers.value;
-    const postsValue = evt.target.posts.value;
-    if(postsValue.endsWith("000")){
-        console.log(thousandK(postsValue));
+    let followersValue = evt.target.followers.value;
+    let postsValue = evt.target.posts.value;
+    const usernameValue = evt.target.username.value;
+    const modifiedUsername = `@${usernameValue}`;
+
+    if (postsValue.endsWith("000")) {
+        postsValue = thousandK(postsValue);
     }
+
     if (followersValue.endsWith("000")) {
-        console.log(thousandK(followersValue))
+        followersValue = thousandK(followersValue);
     }
+
+    const data = {
+        img: evt.target.img.src,
+        followers: followersValue,
+        posts: postsValue,
+        username: modifiedUsername,
+        bio: evt.target.bio.value
+    }
+    window.localStorage.setItem('userData', JSON.stringify(data))
+    location.pathname = './result.html'
+
 });
 
 function selectOption(option) {
     document.getElementById('dropdownInput').value = option;
 }
-
